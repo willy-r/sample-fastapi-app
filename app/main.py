@@ -52,6 +52,7 @@ async def update_item_by_id(item_id: int, item: UpdateItem):
 async def delete_item_by_id(item_id: int):
     try:
         fdb_api.delete_item(item_id)
+        return {'item_id': item_id}
     except Exception as err:
         return {'message': str(err)}
 
