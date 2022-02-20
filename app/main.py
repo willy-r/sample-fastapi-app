@@ -58,4 +58,6 @@ async def delete_item_by_id(item_id: int):
 
 
 if __name__ == '__main__':
-    uvicorn.run('main:app', port=8080, reload=True)
+    PORT = 8080
+    print(f'Server running at port: {PORT}')
+    uvicorn.run('main:app', port=PORT, reload=True)
