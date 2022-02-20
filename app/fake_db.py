@@ -1,4 +1,4 @@
-from .exceptions import ItemNotFoundError
+from exceptions import ItemNotFoundError
 
 
 class FakeDB:
