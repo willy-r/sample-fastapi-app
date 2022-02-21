@@ -1,5 +1,5 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 from fake_db import FakeDB
 from schemas import CreateItem, UpdateItem
@@ -24,7 +24,7 @@ async def get_item_by_id(item_id: int):
         item = fdb_api.get_item(item_id)
         return item
     except Exception as err:
-        return {'message': str(err)}
+        raise HTTPException(status_code=404, detail=str(err))
 
 
 @app.post('/items')
@@ -45,7 +45,7 @@ async def update_item_by_id(item_id: int, item: UpdateItem):
             'updated_fields': updated_fields,
         }
     except Exception as err:
-        return {'message': str(err)}
+       raise HTTPException(status_code=404, detail=str(err))
 
 
 @app.delete('/items/{item_id}')
@@ -54,7 +54,7 @@ async def delete_item_by_id(item_id: int):
         fdb_api.delete_item(item_id)
         return {'item_id': item_id}
     except Exception as err:
-        return {'message': str(err)}
+        raise HTTPException(status_code=404, detail=str(err))
 
 
 if __name__ == '__main__':
