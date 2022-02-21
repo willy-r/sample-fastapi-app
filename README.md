@@ -11,4 +11,5 @@ Just make sure to have **Docker** and **docker-compose** installed in your machi
 $ docker-compose up --build
 ```
 
-After that, you should be able to access the api in the following url: `http:localhost:8000`
+After that, you should be able to access the api in the following url: [`http://localhost:8000`](http://localhost:8000)  
+And see the endpoints and documentation here: [`http://localhost:8000/docs`](http://localhost:8000/docs)
