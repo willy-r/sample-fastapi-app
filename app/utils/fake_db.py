@@ -1,4 +1,4 @@
-from exceptions import ItemNotFoundError
+from .exceptions import ItemNotFoundError
 
 
 class FakeDB:
@@ -42,6 +42,7 @@ class FakeDB:
 
     def update_item(self, item_id: int, fields_to_update: dict):
         item = self.get_item_or_error(item_id)
+        fields_to_update = {k: v for k, v in fields_to_update.items() if v is not None}
         item.update(fields_to_update)
 
         item_id = self.normalize_item_id(item_id)
